@@ -89,6 +89,9 @@ export default class CamouflageGrpc {
             this.server.forceShutdown()
         })
     }
+    public getServer = (): grpc.Server => {
+        return this.server
+    }
     private serverCredentials = (enable: boolean, certPath: string, keyPath: string, rootCert?: string): grpc.ServerCredentials => {
         if (!enable) {
             log.debug(`Using insecure gRPC server credentials.`);
