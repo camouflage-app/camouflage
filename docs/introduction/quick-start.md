@@ -48,6 +48,7 @@ project/
       POST.mock
   config.json
   index.js
+  package.json
 ```
 
 ### Minimal HTTP Config (`config.json`)
@@ -140,7 +141,7 @@ service TodoService{
 ```protobuf
 syntax = "proto3";
 
-package foo.todoEnumPackage;
+package foo.todoPackage;
 
 message Todo {
     string id = 1;
@@ -165,14 +166,30 @@ project/
   grpcMocks/
     foo/
       todoPackage/
-        readTodo.mock
-        readTodoStream.mock
-        createTodoStream.mock
-        createTodoBidiStream.mock
+        TodoService/
+          readTodo.mock
+          readTodoStream.mock
+          createTodoStream.mock
+          createTodoBidiStream.mock
   config.json
   index.js
   todo.proto
   todoEnum.proto
+  package.json
+```
+
+Create the mock file `./grpcMocks/foo/todoPackage/TodoService/readTodo.mock`
+
+```json
+{
+  "todos": [
+    {
+      "id": "1",
+      "text": "Lorem Ipsum"
+    }
+  ],
+  "delay": 500
+}
 ```
 
 Minimal gRPC config (`config.json`):
@@ -184,7 +201,7 @@ Minimal gRPC config (`config.json`):
     "level": "info"
   },
   "host": "0.0.0.0",
-  "port": 50051,
+  "port": 8082,
   "ssl": { "enable": false },
   "mocksDir": "./grpcMocks",
   "monitoring": { "enable": true, "port": 9100 }
@@ -214,25 +231,25 @@ import CamouflageGrpc, { CamouflageGrpcConfig } from "@camouflage/grpc";
 import * as protoloader from "@grpc/proto-loader";
 import * as grpc from "@grpc/grpc-js";
 
-const camouflageGrpc = new CamouflageGrpc();
-camouflageGrpc.loadConfigFromJson("./config_grpc.json");
-
+const camouflageGrpc = new CamouflageGrpc(config);
 const handlers = camouflageGrpc.getHandlers();
 
 const todoPackageDef = protoloader.loadSync("./todo.proto", {});
 const todoGrpcObject = grpc.loadPackageDefinition(todoPackageDef);
-const todoPackage = todoGrpcObject.todoPackage;
+//@ts-ignore
+const todoPackage = todoGrpcObject.foo.todoPackage;
 
 if (handlers) {
+  // @ts-ignore
   camouflageGrpc.addService(todoPackage.TodoService.service, {
-    createBlog: handlers.unaryHandler,
+    readTodo: handlers.unaryHandler,
   });
 }
 
 camouflageGrpc.start();
 ```
 
-Your gRPC service is now available on `localhost:50051`!
+Run `node index.js` and your gRPC service is now available on `localhost:8082`!
 
 ---
 
@@ -247,5 +264,11 @@ curl http://localhost:3000/users
 - Test gRPC with `grpcurl`:
 
 ```bash
-grpcurl -plaintext localhost:50051 my.service.UserService.GetUser
+grpcurl \
+  -plaintext \
+  -import-path ./ \
+  -proto todo.proto \
+  -d '{}' \
+  localhost:8082 \
+  foo.todoPackage.TodoService.readTodo
 ```

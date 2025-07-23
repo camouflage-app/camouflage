@@ -1,6 +1,6 @@
 # Integrating Camouflage With Sveltekit
 
-While Camouflage can be run as a standalone project, it can just as seamlessly be integrated into a **SvelteKit** project allowing you to maintain a single project and start up Camouflage alongside your Sveltekit app.
+You can also integrate Camouflage into a **SvelteKit** project seamlessly allowing you to maintain a single project and start up Camouflage alongside your Sveltekit app.
 
 ### Create a new SvelteKit project
 
