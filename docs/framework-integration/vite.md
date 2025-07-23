@@ -1,6 +1,6 @@
 # Integrating Camouflage With Vite
 
-You can integrate Camouflage with a Vite based project as well for example Svelte, React or Vue or any other frameworks supported by Vite.
+While Camouflage can be run as a standalone project, it can just as seamlessly be integrated into a vite project for any supported frameworks like Svelte, React, etc.
 
 ### Create a new Vite project
 
