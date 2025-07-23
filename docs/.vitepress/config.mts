@@ -68,5 +68,6 @@ export default defineConfig({
       md.use(tabsMarkdownPlugin)
     },
   },
-  ignoreDeadLinks: true
+  ignoreDeadLinks: true,
+  base: "/camouflage/"
 })
