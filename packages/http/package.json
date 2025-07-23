@@ -1,0 +1,39 @@
+{
+  "name": "@camouflage/http",
+  "version": "0.0.1",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@camouflage/helpers": "*",
+    "@camouflage/logger": "*",
+    "apicache": "^1.6.3",
+    "chokidar": "^4.0.3",
+    "compression": "^1.8.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "express-bunyan-logger": "^1.3.3",
+    "express-openapi-validator": "^5.5.7",
+    "express-query-parser": "^1.3.3",
+    "jsonpath": "^1.1.1",
+    "spdy": "^4.0.2",
+    "swagger-stats": "^0.99.7",
+    "zod": "^3.25.67"
+  },
+  "devDependencies": {
+    "@types/apicache": "^1.6.7",
+    "@types/compression": "^1.8.1",
+    "@types/cookie-parser": "^1.4.9",
+    "@types/cors": "^2.8.19",
+    "@types/express-bunyan-logger": "^1.3.6",
+    "@types/jsonpath": "^0.2.4",
+    "@types/spdy": "^3.4.9",
+    "@types/swagger-stats": "^0.95.11",
+    "typescript": "^5.8.3"
+  }
+}

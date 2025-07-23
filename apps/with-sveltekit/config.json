@@ -1,0 +1,12 @@
+{
+  "mode": "development",
+  "log": {
+    "enable": true,
+    "level": "info"
+  },
+  "http": {
+    "enable": true,
+    "port": 3000
+  },
+  "mocksDir": "/Users/shubhendumadhukar/Documents/camouflage/apps/with-sveltekit/mocks"
+}

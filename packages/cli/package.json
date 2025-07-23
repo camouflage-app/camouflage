@@ -1,0 +1,19 @@
+{
+  "name": "@camouflage/cli",
+  "version": "0.0.1",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@camouflage/http": "*",
+    "@camouflage/grpc": "*",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "inquirer": "^12.7.0"
+  }
+}
