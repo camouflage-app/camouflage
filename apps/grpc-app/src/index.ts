@@ -15,7 +15,7 @@ const config: CamouflageGrpcConfig = {
         "key": "", // if enable=true, required config for .key file
         "rootCert": "" // Optionally, provide location to root cert
     },
-    "mocksDir": "/Users/shubhendumadhukar/Documents/camouflage/grpcMocks", // location of the mocks folder
+    "mocksDir": "./grpcMocks", // location of the mocks folder
     "monitoring": {
         "enable": true, // enables or disables monitoring
         "port": 40000 // required port for monitoring server
@@ -24,14 +24,15 @@ const config: CamouflageGrpcConfig = {
 const camouflageGrpc = new CamouflageGrpc(config);
 const handlers = camouflageGrpc.getHandlers();
 
-const blogPackageDef = protoloader.loadSync("/Users/shubhendumadhukar/Documents/camouflage/blog.proto", {});
-const blogGrpcObject = grpc.loadPackageDefinition(blogPackageDef);
-const blogPackage = blogGrpcObject.blogPackage;
+const todoPackageDef = protoloader.loadSync("./todo.proto", {});
+const todoGrpcObject = grpc.loadPackageDefinition(todoPackageDef);
+//@ts-ignore
+const todoPackage = todoGrpcObject.foo.todoPackage;
 
 if (handlers) {
     // @ts-ignore
-    camouflageGrpc.addService(blogPackage.BlogService.service, {
-        createBlog: handlers.unaryHandler,
+    camouflageGrpc.addService(todoPackage.TodoService.service, {
+        readTodo: handlers.unaryHandler,
     });
 }
 
