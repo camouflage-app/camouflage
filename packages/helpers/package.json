@@ -1,6 +1,6 @@
 {
   "name": "@camouflage/helpers",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -9,7 +9,7 @@
     "build": "tsc -p tsconfig.json"
   },
   "dependencies": {
-    "@camouflage/logger": "*",
+    "@camouflage/logger": "^0.0.1",
     "@faker-js/faker": "^9.9.0",
     "express-hbs": "^2.5.0",
     "handlebars": "^4.7.8",
