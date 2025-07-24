@@ -9,8 +9,8 @@
     "build": "tsc -p tsconfig.json"
   },
   "dependencies": {
-    "@camouflage/helpers": "*",
-    "@camouflage/logger": "*",
+    "@camouflage/helpers": "^0.1.4",
+    "@camouflage/logger": "^0.0.1",
     "apicache": "^1.6.3",
     "bunyan-format": "^0.2.1",
     "chokidar": "^4.0.3",
