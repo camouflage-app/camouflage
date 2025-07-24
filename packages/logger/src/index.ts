@@ -15,4 +15,4 @@ export const createLogger = (name: string, level: LogLevel) =>
         level, // or configurable
     });
 
-export type { LogLevel, bunyan };
+export { bunyan, LogLevel };
