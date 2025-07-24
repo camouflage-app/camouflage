@@ -17,7 +17,14 @@ import spdy from 'spdy';
 import { CompressionOptions } from "compression";
 import * as chokidar from "chokidar";
 import { debounce } from "../utils/debouce.js";
-
+/**
+ * CamouflageHttp
+ *
+ * A configurable HTTP mock server for REST APIs.
+ * Supports multiple protocols (HTTP, HTTPS, HTTP2),
+ * dynamic templating with Handlebars, middleware,
+ * hooks, and request validation.
+ */
 export default class CamouflageHttp {
     private watcher: chokidar.FSWatcher | null = null;
     private config: CamouflageHttpConfig | null = null;

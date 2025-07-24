@@ -2,7 +2,12 @@ import { bunyan, LogLevel } from "@camouflage/logger"
 import { z, ZodError } from "zod"
 import { log } from "./logger.js"
 import type express from 'express'
-
+/**
+ * Represents a processed HTTP mock response.
+ *
+ * This object is passed to hooks (beforeResponse, afterResponse)
+ * and contains the final response data that will be sent.
+ */
 export interface CamouflageResponse {
     statusCode: number;
     delay: number;
@@ -11,13 +16,42 @@ export interface CamouflageResponse {
     isFile?: boolean;
     filePath?: string;
 }
+
+/**
+ * Hook callback signature for CamouflageHttp.
+ *
+ * @param req - Express request object
+ * @param res - Express response object
+ * @param data - Optional processed response
+ */
 export type CamouflageHttpHook = (req: express.Request, res: express.Response, camouflageResponse?: CamouflageResponse) => void;
+/**
+ * Lifecycle events for HTTP hooks.
+ * - `onRequest` → called before reading the mock file
+ * - `beforeResponse` → called after processing the mock but before sending response
+ * - `afterResponse` → called after response is sent
+ */
 export type HookEvent = "onRequest" | "beforeResponse" | "afterResponse";
+/**
+ * Route-specific hook storage.
+ *
+ * Example:
+ * ```
+ * hooks["/users/{id}"] = {
+ *   onRequest: [fn1, fn2],
+ *   beforeResponse: [fn3],
+ *   afterResponse: [fn4]
+ * }
+ * ```
+ */
 export interface Hooks {
     [route: string]: {
         [event in HookEvent]?: CamouflageHttpHook[];
     };
 }
+/**
+ * Configuration options for Camouflage HTTP server.
+ */
 export interface CamouflageHttpConfig {
     mode: "development" | "production"
     log: LogConfig
