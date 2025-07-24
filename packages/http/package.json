@@ -12,6 +12,7 @@
     "@camouflage/helpers": "*",
     "@camouflage/logger": "*",
     "apicache": "^1.6.3",
+    "bunyan-format": "^0.2.1",
     "chokidar": "^4.0.3",
     "compression": "^1.8.0",
     "cookie-parser": "^1.4.7",
