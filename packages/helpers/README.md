@@ -2,11 +2,11 @@
 
 A collection of **Handlebars helpers** used by Camouflage to generate **dynamic mock responses**.
 
-✅ Generate fake names, emails, dates  
-✅ Pick random values & numbers  
-✅ Import mock files
-✅ Access request data (query params, headers, cookies)  
-✅ Maintain state across requests
+- ✅ Generate fake names, emails, dates
+- ✅ Pick random values & numbers
+- ✅ Import mock files
+- ✅ Access request data (query params, headers, cookies)
+- ✅ Maintain state across requests
 
 > [!NOTE]
 > These helpers are automatically included in **@camouflage/http** and **@camouflage/grpc**
