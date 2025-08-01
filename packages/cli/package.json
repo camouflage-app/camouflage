@@ -9,8 +9,8 @@
     "build": "tsc -p tsconfig.json"
   },
   "devDependencies": {
-    "@camouflage/http": "*",
-    "@camouflage/grpc": "*",
+    "@camouflage/http": "workspace:*",
+    "@camouflage/grpc": "workspace:*",
     "typescript": "^5.8.3"
   },
   "dependencies": {

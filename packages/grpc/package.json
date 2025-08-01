@@ -9,8 +9,8 @@
     "build": "tsc -p tsconfig.json"
   },
   "dependencies": {
-    "@camouflage/helpers": "*",
-    "@camouflage/logger": "*",
+    "@camouflage/helpers": "workspace:*",
+    "@camouflage/logger": "workspace:*",
     "@grpc/grpc-js": "^1.13.4",
     "@grpc/proto-loader": "^0.7.15",
     "jsonpath": "^1.1.1",
