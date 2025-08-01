@@ -56,7 +56,7 @@ export default class CamouflageGrpc {
     public getHandlers = (): CamouflageGrpcHandler | undefined => {
         return this.handlers
     }
-    public getHelpers = () => {
+    public getHelpers = (): Helpers => {
         return this.helpers
     }
     public addService = (service: grpc.ServiceDefinition<grpc.UntypedServiceImplementation>, implementation: grpc.UntypedServiceImplementation): void => {

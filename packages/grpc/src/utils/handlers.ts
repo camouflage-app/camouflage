@@ -38,7 +38,7 @@ export class CamouflageGrpcHandler {
             help: "Histogram of response latency (seconds) of gRPC that had been application-level handled by the server.",
         })
     }
-    public unaryHandler = async (call: grpc.ServerUnaryCall<any, any>, callback: grpc.sendUnaryData<any>) => {
+    public unaryHandler = async (call: grpc.ServerUnaryCall<any, any>, callback: grpc.sendUnaryData<any>): Promise<void> => {
         const startTime = process.hrtime();
         const handlerPath = call.getPath();
         log.debug(`Call recieved for handler: ${handlerPath}`)
@@ -89,7 +89,7 @@ export class CamouflageGrpcHandler {
             this.collectMetrics(startTime, errorObj, handlerPath, "unary")
         }
     }
-    public serverSideStreamingHandler = async (call: grpc.ServerWritableStream<any, any>) => {
+    public serverSideStreamingHandler = async (call: grpc.ServerWritableStream<any, any>): Promise<void> => {
         const startTime = process.hrtime();
         const handlerPath = call.getPath();
         const mockFile = handlerPath.replace(/\./g, "/");
@@ -145,7 +145,7 @@ export class CamouflageGrpcHandler {
             this.collectMetrics(startTime, error, handlerPath, "server-stream")
         }
     }
-    public clientSideStreamingHandler = (call: grpc.ServerReadableStream<any, any>, callback: grpc.sendUnaryData<any>) => {
+    public clientSideStreamingHandler = (call: grpc.ServerReadableStream<any, any>, callback: grpc.sendUnaryData<any>): void => {
         const handlerPath = call.getPath();
         const requests: any[] = [];
         call.on('data', async (data: any) => {
@@ -202,7 +202,7 @@ export class CamouflageGrpcHandler {
             }
         })
     }
-    public bidiStreamingHandler = (call: grpc.ServerDuplexStream<any, any>) => {
+    public bidiStreamingHandler = (call: grpc.ServerDuplexStream<any, any>): void => {
         let startTime = process.hrtime()
         const handlerPath = call.getPath();
         const mockFile = handlerPath.replace(/\./g, "/");
