@@ -1,6 +1,4 @@
 import Helpers from "@camouflage/helpers";
-import { createLogger } from "@camouflage/logger";
-const log = createLogger("build", "info")
 const helpers = new Helpers();
 
 const arrayAndAssign = helpers.parse(`
@@ -12,13 +10,13 @@ const arrayAndAssign = helpers.parse(`
             {{fruit}}-
         {{~/if~}}
     {{~/each~}}`)
-log.info(arrayAndAssign)
+console.log(arrayAndAssign)
 
 const concat = helpers.parse(`{{concat 'Camouflage ' 'is ' 'easy!!'}} {{concat '1' '22' '333' delimiter='-'}}`)
-log.info(concat)
+console.log(concat)
 
 const todaysDate = helpers.parse("{{now format='yyyy-MM-dd'}}");
-log.info(todaysDate)
+console.log(todaysDate)
 
 const faker = helpers.parse(`
 {{faker method="internet.email"}}
@@ -26,4 +24,4 @@ const faker = helpers.parse(`
 {{faker method="number.int" min=10 max=50}}
 {{faker method="location.city"}}
 `)
-log.info(faker)
+console.log(faker)

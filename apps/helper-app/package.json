@@ -8,8 +8,7 @@
     "dev": "node --loader ts-node/esm src/index.ts"
   },
   "dependencies": {
-    "@camouflage/helpers": "*",
-    "@camouflage/logger": "*"
+    "@camouflage/helpers": "*"
   },
   "devDependencies": {
     "ts-node": "^10.9.2",

@@ -1,7 +1,7 @@
 import Handlebars from "handlebars";
 import fs from 'fs'
 import path from 'path'
-import { bunyan } from "@camouflage/logger";
+import bunyan from "bunyan";
 /**
  * Registers import helper
  * - Fetch the file path from the context hash

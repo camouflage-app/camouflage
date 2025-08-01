@@ -1,4 +1,4 @@
-import { bunyan } from "@camouflage/logger";
+import bunyan from "bunyan";
 import Handlebars from "handlebars";
 import { faker } from "@faker-js/faker";
 

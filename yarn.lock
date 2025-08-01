@@ -1142,12 +1142,12 @@
 
 "@types/bunyan-format@^0.2.9":
   version "0.2.9"
-  resolved "https://registry.npmjs.org/@types/bunyan-format/-/bunyan-format-0.2.9.tgz"
+  resolved "https://registry.yarnpkg.com/@types/bunyan-format/-/bunyan-format-0.2.9.tgz#0b92187025244adceb2c84611b0aa7301d518d50"
   integrity sha512-WuHXkdlVOzNejhWMO7mSu+i81rpp3b1pGB8HDCv+HtOGkz0gpoTSKfaQfDgYDUKI0BfZM4XRNGsVSI11akwrEQ==
   dependencies:
     "@types/node" "*"
 
-"@types/bunyan@*", "@types/bunyan@^1.8.11":
+"@types/bunyan@*":
   version "1.8.11"
   resolved "https://registry.npmjs.org/@types/bunyan/-/bunyan-1.8.11.tgz"
   integrity sha512-758fRH7umIMk5qt5ELmRMff4mLDlN+xyYzC+dkPTdKwbSkJFvz6xwyScrytPU0QIBbRRwbiE8/BIg8bpajerNQ==

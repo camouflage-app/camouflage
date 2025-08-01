@@ -1,4 +1,4 @@
-import { bunyan, LogLevel } from "@camouflage/logger"
+import bunyan, { LogLevel } from "bunyan"
 import { z, ZodError } from "zod"
 import { log } from "./logger.js"
 import type express from 'express'

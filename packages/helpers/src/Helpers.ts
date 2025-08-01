@@ -1,6 +1,7 @@
-import { createLogger, type LogLevel } from "@camouflage/logger"
 import Handlebars from "handlebars"
 import { array, assign, concat, csvCamouflageHelper, fakerHelper, importMock, inject, is, now, numBetween, random } from "./core/index.js";
+import { log } from "./logger.js";
+import { LogLevel } from "bunyan";
 /**
  * Helpers
  *
@@ -32,7 +33,7 @@ export default class Helpers {
     private injectionAllowed: boolean = false
     private log: any = null;
     constructor(injectionAllowed?: boolean, loglevel: LogLevel = "info") {
-        this.log = createLogger("camouflage-helpers", loglevel)
+        this.log = log
         if (injectionAllowed) this.injectionAllowed = injectionAllowed
         this.registerDefaultHelpers()
     }
