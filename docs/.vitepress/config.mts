@@ -34,7 +34,6 @@ export default defineConfig({
           },
           {
             text: 'Configuration',
-            link: "/configuration",
             items: [
               { text: 'HTTP', link: '/configuration/http' },
               { text: 'gRPC', link: '/configuration/grpc' },
