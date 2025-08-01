@@ -9,7 +9,7 @@
     "build": "tsc -p tsconfig.json"
   },
   "dependencies": {
-    "@camouflage/helpers": "*",
+    "@camouflage/helpers": "npm:@jsr/camouflage__helpers@^0.1.7",
     "apicache": "^1.6.3",
     "bunyan-format": "^0.2.1",
     "chokidar": "^4.0.3",
