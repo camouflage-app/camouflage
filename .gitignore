@@ -144,3 +144,5 @@ mocks
 *.txt
 *.http
 .DS_Store
+*.crt
+*.key

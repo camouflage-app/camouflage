@@ -13,10 +13,10 @@ import type { ParsedQs } from 'qs'
 import type { Request } from "express";
 import Helpers from '@camouflage/helpers'
 import { registerCustomHelpers } from '../helpers/index.js'
-import spdy from 'spdy';
 import { CompressionOptions } from "compression";
 import * as chokidar from "chokidar";
 import { debounce } from "../utils/debouce.js";
+import type { ServerOptions } from "spdy";
 /**
  * CamouflageHttp
  *
@@ -36,7 +36,7 @@ export default class CamouflageHttp {
     private http2Server: Server | null = null
     private httpServerOptions: http.ServerOptions | null = null
     private httpsServerOptions: https.ServerOptions | null = null
-    private http2ServerOptions: spdy.server.ServerOptions | null = null
+    private http2ServerOptions: ServerOptions | null = null
     private helpers: Helpers;
     private hooks: Hooks = {};
     private validationOpts: any | null = null
@@ -94,7 +94,7 @@ export default class CamouflageHttp {
     public setServerOptionsHttps = (options: https.ServerOptions): void => {
         this.httpsServerOptions = options
     }
-    public setServerOptionsHttp2 = (options: spdy.server.ServerOptions): void => {
+    public setServerOptionsHttp2 = (options: ServerOptions): void => {
         this.http2ServerOptions = options
     }
     public setupCacheWithOptions = (options: apicache.Options): void => {
@@ -141,9 +141,15 @@ export default class CamouflageHttp {
             })
         }
         if (this.config.http2 && this.config.http2.enable && this.app && this.http2ServerOptions) {
-            this.http2Server = spdy.createServer(this.http2ServerOptions, this.app).listen(this.config.http2?.port, () => {
-                log.info(`Ask and ye shall recieve a camouflage-http2 server at [:${this.config?.http2?.port}]`)
-            })
+            try {
+                const spdy = (await import('spdy')).default
+                this.http2Server = spdy.createServer(this.http2ServerOptions, this.app).listen(this.config.http2?.port, () => {
+                    log.info(`Ask and ye shall recieve a camouflage-http2 server at [:${this.config?.http2?.port}]`)
+                })
+            } catch (error) {
+                console.log(error)
+                log.warn('HTTP/2 server could not be started because "spdy"/"http_parser" is not supported in the your NodeJS version. Try downgrading to a supported NodeJS version. It is recommended to use nvm to maintain multiple node versions.');
+            }
         }
         if (this.config.https && this.config.https.enable && !this.httpsServerOptions) {
             log.error(`Oops! https server needs its SSL suit. Hint: camouflage.setServerOptionsHttps()`)
