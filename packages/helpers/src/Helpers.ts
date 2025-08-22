@@ -1,12 +1,39 @@
-import { createLogger, type LogLevel } from "@camouflage/logger"
 import Handlebars from "handlebars"
 import { array, assign, concat, csvCamouflageHelper, fakerHelper, importMock, inject, is, now, numBetween, random } from "./core/index.js";
-
+import { log } from "./logger.js";
+import { LogLevel } from "bunyan";
+/**
+ * Helpers
+ *
+ * A collection of built-in Handlebars helpers for generating dynamic mock responses.
+ *
+ * Used internally by Camouflage to enhance `.mock` files with:
+ * - Fake data generation
+ * - Dynamic timestamps
+ * - Randomization
+ * - Request data extraction
+ * - File imports (JSON/CSV)
+ * - State persistence
+ *
+ * Can also be used standalone in any Handlebars setup.
+ *
+ * @example
+ * ```ts
+ * import Handlebars from "handlebars";
+ * import Helpers from "@camouflage/helpers";
+ *
+ * const helpers = new Helpers();
+ * helpers.register(Handlebars);
+ *
+ * const template = Handlebars.compile("{{faker 'name.firstName'}}");
+ * console.log(template({})); // => "Alice"
+ * ```
+ */
 export default class Helpers {
     private injectionAllowed: boolean = false
     private log: any = null;
     constructor(injectionAllowed?: boolean, loglevel: LogLevel = "info") {
-        this.log = createLogger("camouflage-helpers", loglevel)
+        this.log = log
         if (injectionAllowed) this.injectionAllowed = injectionAllowed
         this.registerDefaultHelpers()
     }

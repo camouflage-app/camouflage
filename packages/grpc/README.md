@@ -1,121 +1,22 @@
-# Quick Start
+# @camouflage/http
+
+**@camouflage/grpc** is a lightweight **gRPC mock server** built for simulating service-to-service RPC interactions in development and testing environments.
+
+- ✅ File-based routing for gRPC methods
+- ✅ Dynamic response generation with Handlebars templates
+- ✅ Streaming and unary mocks
+- ✅ TLS/SSL support
+- ✅ Prometheus monitoring endpoint
+
+[👉 Full Documentation](https://camouflage-app.github.io/camouflage/)
 
 ## Installation
 
-You can install Camouflage via **npm** or **yarn**.
-
-:::tabs key:installation
-== npm
+Install with jsr.io:
 
 ```bash
-# For HTTP mocking
-npx jsr add @camouflage/http
-# For gRPC mocking
 npx jsr add @camouflage/grpc
-# Optional helpers (already included by default)
-npx jsr add @camouflage/helpers
 ```
-
-== yarn
-
-```bash
-# For HTTP mocking
-yarn add jsr:@camouflage/http
-# For gRPC mocking
-yarn add jsr:@camouflage/grpc
-# Optional helpers (already included by default)
-yarn add jsr:@camouflage/helpers
-```
-
-:::
-
-### Requirements
-
-- Node.js **18+**
-- `npm` or `yarn`
-
-## Quick Start - HTTP
-
-Let’s set up a **minimal HTTP mock server** in under 5 minutes.
-
-### Folder Structure
-
-```text
-project/
-  mocks/
-    users/
-      GET.mock
-      POST.mock
-  config.json
-  index.js
-  package.json
-```
-
-### Minimal HTTP Config (`config.json`)
-
-```json
-{
-  "mode": "development",
-  "log": {
-    "enable": true,
-    "level": "info"
-  },
-  "http": {
-    "enable": true,
-    "port": 3000
-  },
-  "mocksDir": "./mocks"
-}
-```
-
-### Example Mock Files
-
-`mocks/users/GET.mock`
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-[
-  { "id": 1, "name": "Alice" },
-  { "id": 2, "name": "Bob" }
-]
-```
-
-`mocks/users/POST.mock`
-
-```http
-HTTP/1.1 201 Created
-Content-Type: application/json
-
-{ "message": "User created successfully" }
-
-```
-
-### Start the HTTP Server
-
-```js
-import CamouflageHttp from "@camouflage/http";
-
-const server = new CamouflageHttp();
-server.loadConfigFromJson("./config.json");
-server.start();
-```
-
-Run it:
-
-```bash
-node index.js
-```
-
-Your mock API is now running on **[http://localhost:3000](http://localhost:3000)**
-
-- `GET /users` → returns a JSON list of users
-- `POST /users` → returns a success message
-
----
-
-## Quick Start - gRPC
 
 Start with your proto file
 
@@ -209,20 +110,10 @@ Minimal gRPC config (`config.json`):
 ```
 
 Install additional packages
-:::tabs key:installation
-== npm
 
 ```bash
 npm install @grpc/proto-loader @grpc/grpc-js
 ```
-
-== yarn
-
-```bash
-yarn add @grpc/proto-loader @grpc/grpc-js
-```
-
-:::
 
 Start gRPC server:
 
@@ -251,17 +142,7 @@ camouflageGrpc.start();
 
 Run `node index.js` and your gRPC service is now available on `localhost:8082`!
 
----
-
-## Testing the Mock
-
-- Test HTTP with `curl`:
-
-```bash
-curl http://localhost:3000/users
-```
-
-- Test gRPC with `grpcurl`:
+### Test gRPC with `grpcurl`:
 
 ```bash
 grpcurl \

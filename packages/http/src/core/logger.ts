@@ -1,3 +1,7 @@
-import { bunyan, createLogger } from "@camouflage/logger";
-
-export const log: bunyan = createLogger("camouflage-http", "info")
+import bunyan from 'bunyan'
+import bformat from 'bunyan-format'
+const formatOut: NodeJS.WritableStream = bformat({ outputMode: 'short' })
+export const log: bunyan = bunyan.createLogger({
+    name: "camouflage-http",
+    stream: formatOut
+})

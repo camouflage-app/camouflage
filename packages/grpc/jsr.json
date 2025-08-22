@@ -1,0 +1,5 @@
+{
+  "name": "@camouflage/grpc",
+  "version": "0.1.7",
+  "exports": "./src/index.ts"
+}

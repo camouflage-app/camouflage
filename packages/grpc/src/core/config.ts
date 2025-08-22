@@ -4,7 +4,7 @@ import fs from 'fs'
 import path from 'path'
 import * as grpc from '@grpc/grpc-js';
 import { CamouflageGrpcResponse } from "../utils/handlers.js"
-import { bunyan, LogLevel } from "@camouflage/logger";
+import { LogLevel } from "bunyan";
 
 export type CamouflageGrpcHook = (req: grpc.ServerUnaryCall<any, any> | grpc.ServerWritableStream<any, any> | grpc.ServerReadableStream<any, any>, data?: any, res?: CamouflageGrpcResponse) => void;
 export type HookEvent = "onRequest" | "beforeResponse" | "afterResponse";

@@ -4,7 +4,7 @@ import Handlebars from "handlebars";
 import fs from 'fs'
 import path from 'path'
 import os from 'os'
-import { bunyan } from "@camouflage/logger";
+import bunyan from "bunyan";
 /**
  * Registers csv helper
  * - Fetch the file path, key, value, random and all variables from the context hash
