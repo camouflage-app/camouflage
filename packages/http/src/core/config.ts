@@ -73,7 +73,7 @@ interface ValidationConfig {
 }
 interface LogConfig {
     enable: boolean
-    level: LogLevel
+    level?: LogLevel
     disableRequestLogs?: boolean
 }
 interface CacheOptions {
@@ -109,7 +109,7 @@ const http2Schema: z.ZodSchema = z.object({
 });
 const logSchema: z.ZodSchema = z.object({
     enable: z.boolean(),
-    level: z.enum(["trace", "debug", "info", "warn", "error", "fatal"]),
+    level: z.enum(["trace", "debug", "info", "warn", "error", "fatal"]).optional(),
 });
 const validationConfigSchema: z.ZodSchema = z.object({
     enable: z.boolean(),
@@ -133,10 +133,11 @@ const camouflageConfigSchema: z.ZodSchema = z.object({
     if (!data.log.enable) {
         log.level(bunyan.FATAL + 1)
     } else {
+        if (!data.log.level) return false
         log.level(data.log.level)
     }
     return true
-}, {})
+}, { message: "log.level is required if log.enabled is true" })
     .refine(data => data.http || data.https || data.http2, {
         message: "At least one of, 'http', 'https' or 'http2' must be provided in config.",
     }).refine(data => data.http?.enable || data.https?.enable || data.http2?.enable, {

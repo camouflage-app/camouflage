@@ -7,11 +7,6 @@ export default defineConfig({
   description: "API Mocking Made Easy",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Documentation', link: '/introduction/what-is-camouflage' }
-    ],
-
     sidebar: [
       {
         text: 'Camouflage Documentation',
@@ -19,37 +14,18 @@ export default defineConfig({
           {
             text: 'Introduction',
             items: [
-              { text: 'What is Camouflage?', link: '/introduction/what-is-camouflage' },
-              { text: 'Quick Start', link: '/introduction/quick-start' },
+              { text: 'What is Camouflage?', link: '/' },
             ]
           },
           {
-            text: 'Framework Integration',
+            text: 'HTTP',
             items: [
-              { text: 'Vite (Svelte, React, Vue, etc)', link: '/framework-integration/vite' },
-              { text: 'Sveltekit', link: '/framework-integration/sveltekit' },
-              // { text: 'Next.js', link: '/framework-integration/next-js' },
-              // { text: 'Nuxt', link: '/framework-integration/nuxt' },
+              { text: 'Quick Start', link: '/http/quick-start' },
+              { text: 'Configuration', link: '/http/configuration' },
+              { text: 'Available Methods', link: '/http/available-methods' },
+              { text: 'Validation', link: '/http/validation' },
+              { text: 'Compression', link: '/http/compression' },
             ]
-          },
-          {
-            text: 'Configuration',
-            items: [
-              { text: 'HTTP', link: '/configuration/http' },
-              { text: 'gRPC', link: '/configuration/grpc' },
-              { text: 'Advanced Configuration', link: '/configuration/advanced' },
-            ]
-          },
-          {
-            text: 'Writing Mocks',
-            items: [
-              { text: 'HTTP', link: '/writing-mocks/http' },
-              { text: 'gRPC', link: '/writing-mocks/grpc' }
-            ]
-          },
-          {
-            text: 'Helpers',
-            link: '/helpers'
           },
         ]
       }

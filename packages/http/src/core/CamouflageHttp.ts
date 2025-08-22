@@ -199,15 +199,14 @@ export default class CamouflageHttp {
     }
     private watchMocksDir = () => {
         if (!this.config) return;
-        const dir = this.config.mocksDir;
 
-        this.watcher = chokidar.watch(dir, {
+        this.watcher = chokidar.watch(".", {
             persistent: true,
             ignoreInitial: true,
             depth: 10, // watch nested dirs
         });
 
-        log.info(`Watching for changes in ${dir}...`);
+        log.info(`Watching for changes...`);
 
         const restartDebounced = debounce(() => {
             log.info("Mock files changed. Restarting server...");
