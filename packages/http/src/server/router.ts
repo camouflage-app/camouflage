@@ -8,8 +8,6 @@ import type { ParsedQs } from 'qs'
 import { registerRoutes } from "../utils/loadRoutes.js";
 import { CompressionOptions } from "compression";
 import Helpers from "@camouflage/helpers";
-import fs from "fs";
-import path from "path";
 
 export const setupExpressServer = async (
     config: CamouflageHttpConfig,

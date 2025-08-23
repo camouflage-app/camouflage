@@ -86,7 +86,7 @@ Camouflage allows such configuration via several methods on the `CamouflageHttp`
 
 ### _setServerOptionsHttp(options: http.ServerOptions): void_
 
-Depending on your use case, you might want to set additional options. Use `_setServerOptionsHttp` to pass those options to Camouflage server. Read more about the available options in the official [documentation](https://nodejs.org/api/http.html#httpcreateserveroptions-requestlistener)
+Depending on your use case, you might want to set additional options. Use `setServerOptionsHttp` to pass those options to Camouflage server. Read more about the available options in the official [documentation](https://nodejs.org/api/http.html#httpcreateserveroptions-requestlistener)
 
 ### _setServerOptionsHttps(options: https.ServerOptions): void_
 
@@ -154,3 +154,15 @@ Allows you to setup [compression options](https://www.npmjs.com/package/compress
 ---
 
 There are more available methods exposed by `CamouflageHttp` which aren't related to configuration. Read more on the next page.
+
+## Configuration via `CamouflageHttp` Options
+
+Alternatively, you can initialize your `CamouflageHttp` class by passing the required options. While doing so, you don't need to use `loadConfigFromJson` and use a `config.json` file. This is helpful in case you want to programmatically control your configuration options.
+
+Options you can pass are:
+
+- **config?: CamouflageHttpConfig**
+- **httpOptions?: http.ServerOptions**
+- **httpsOptions?: https.ServerOptions**
+- **cacheOptions?: apicache.Options**
+- **corsOptions?: cors.CorsOptions | cors.CorsOptionsDelegate<Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>>**

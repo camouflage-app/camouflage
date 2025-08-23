@@ -95,6 +95,6 @@ const handler = (
 const sleep = (ms: number): Promise<void> => {
     return new Promise((resolve) => setTimeout(resolve, ms));
 };
-const pathToRoute = (path: string): string => {
+export const pathToRoute = (path: string): string => {
     return path.replace(/\{([^\}]+)\}/g, ':$1');
 }
