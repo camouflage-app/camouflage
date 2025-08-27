@@ -23,8 +23,17 @@ export default defineConfig({
               { text: 'Quick Start', link: '/http/quick-start' },
               { text: 'Configuration', link: '/http/configuration' },
               { text: 'Available Methods', link: '/http/available-methods' },
+              { text: 'Hooks', link: '/http/hooks' },
               { text: 'Validation', link: '/http/validation' },
               { text: 'Compression', link: '/http/compression' },
+              { text: 'Routing', link: '/http/routing' },
+              { text: 'Writing Mock Files', link: '/http/writing-mock-files' },
+            ]
+          },
+          {
+            text: 'Helpers',
+            items: [
+              { text: 'What are Helpers', link: '/helpers/what-are-helpers' },
             ]
           },
         ]

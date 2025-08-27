@@ -17,6 +17,7 @@ import { CompressionOptions } from "compression";
 import * as chokidar from "chokidar";
 import { debounce } from "../utils/debouce.js";
 import type { ServerOptions } from "spdy";
+import { pathToRoute } from "../utils/loadRoutes.js";
 /**
  * CamouflageHttp
  *
@@ -110,6 +111,7 @@ export default class CamouflageHttp {
         this.compressionOpts = compressionOpts
     }
     public addHook = (route: string, event: "onRequest" | "beforeResponse" | "afterResponse", fn: CamouflageHttpHook): void => {
+        route = pathToRoute(route)
         if (!this.hooks[route]) {
             this.hooks[route] = {};
         }

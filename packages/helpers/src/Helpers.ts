@@ -1,5 +1,5 @@
 import Handlebars from "handlebars"
-import { array, assign, concat, csvCamouflageHelper, fakerHelper, importMock, inject, is, now, numBetween, random } from "./core/index.js";
+import { array, assign, concat, csvCamouflageHelper, fakerHelper, importMock, inject, is, now, numBetween, random, repeat } from "./core/index.js";
 import { log } from "./logger.js";
 import { LogLevel } from "bunyan";
 /**
@@ -49,6 +49,7 @@ export default class Helpers {
         numBetween(this.log)
         random()
         fakerHelper(this.log)
+        repeat(this.log)
         if (this.injectionAllowed) {
             inject()
         }
