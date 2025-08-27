@@ -26,6 +26,8 @@ export default defineConfig({
               { text: 'Hooks', link: '/http/hooks' },
               { text: 'Validation', link: '/http/validation' },
               { text: 'Compression', link: '/http/compression' },
+              { text: 'Routing', link: '/http/routing' },
+              { text: 'Writing Mock Files', link: '/http/writing-mock-files' },
             ]
           },
           {

@@ -25,3 +25,14 @@ const faker = helpers.parse(`
 {{faker method="location.city"}}
 `)
 console.log(faker)
+
+const repeat = helpers.parse(`[
+    {{~#repeat 3~}}
+        {{~#if @last~}}
+            { "id": "{{random}}", "name": "{{faker method="person.firstName"}}" }
+        {{~else~}}
+            { "id": "{{random}}", "name": "{{faker method="person.firstName" sex="female"}}" },
+        {{~/if~}}
+    {{~/repeat~}}
+]`)
+console.log(repeat)

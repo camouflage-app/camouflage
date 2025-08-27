@@ -151,9 +151,8 @@ Allows you to setup validations using an Open API 3 specification. Read more on 
 
 Allows you to setup [compression options](https://www.npmjs.com/package/compression#options) provided by `compression` middleware. Read more on usage in the [compression](/http/compression) section.
 
----
-
-There are more available methods exposed by `CamouflageHttp` which aren't related to configuration. Read more on the next page.
+> [!NOTE]
+> There are more available methods exposed by `CamouflageHttp` which aren't related to configuration. Read more on the [next page](/http/available-methods).
 
 ## Configuration via `CamouflageHttp` Options
 
