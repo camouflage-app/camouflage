@@ -2,6 +2,7 @@
 layout: doc
 aside: false
 ---
+
 # What is Camouflage?
 
 ## Introduction
@@ -10,9 +11,9 @@ aside: false
 
 - **Developers** who want to quickly test frontend or backend integrations without relying on real services.
 - **QA & Automation** teams who need stable, predictable mock responses for automated testing.
-- **CI/CD pipelines** where real services may not always be available.
+- **CI/CD pipelines** where real services may not always be available. Or to build a quick config flag management system.
 
-Camouflage works on a file based endpoint configuration system, which means it allows you to create a mock endpoint by simply creating a set of directories and a mock file, using which necessary responses are generated when you call the endpoint.
+Camouflage works on a file based routing system, which means it allows you to create a mock endpoint by simply creating a set of directories and a mock file, using which necessary responses are generated when you call the endpoint.
 
 > [!WARNING]
 > GRPC Mocking is currently in beta and might have breaking changes
@@ -21,7 +22,7 @@ Camouflage works on a file based endpoint configuration system, which means it a
 
 Most tools at the moment, require you to remember a rigid JSON schema to be able to create/manage your mocks. If not, they come with complex GUIs and some tool specific terminologies. All of this feels like an overkill for a simple mock server. Let's face it, no one wants to "learn" how to create mocks. It just something we have to do so that we can focus on what we actually want to do, which is building frontends or independent microservices even if everything isn't ready yet.
 
-Camouflage allows you to create mocks in seconds, no learning curve, no JSON schema, no specific terminologies. Just copy and paste your expected response in a mock file, and you're good to go. And of course, if you want to enhance the mocks, Camouflage provides you intuitive ways to do that. You can use templates and helpers in your mock files, you can tap into the relevant hooks and modify the request/response or you can code your own router as you would in express.js. Technically, you could build a fully functional backend connected to a database using Camouflage.
+Camouflage allows you to create mocks in seconds, no learning curve, no JSON schema, no specific terminologies. Just copy and paste your expected response in a mock file, and you're good to go. And of course, if you want to enhance the mocks, Camouflage provides you intuitive ways to do that using tools that you already know (expressjs, handlebarjs etc.). You can use templates and helpers in your mock files, you can tap into the relevant hooks and modify the request/response or you can code your own router as you would in express.js. Technically, you could build a fully functional backend connected to a database using Camouflage.
 
 _**We wouldn't recommend doing so! Just saying you could...if you don't want to live by the rules and enjoy chaos.**_
 

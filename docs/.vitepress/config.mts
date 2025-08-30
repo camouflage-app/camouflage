@@ -30,12 +30,8 @@ export default defineConfig({
               { text: 'Writing Mock Files', link: '/http/writing-mock-files' },
             ]
           },
-          {
-            text: 'Helpers',
-            items: [
-              { text: 'What are Helpers', link: '/helpers/what-are-helpers' },
-            ]
-          },
+          { text: 'Helpers', link: '/helpers/index' },
+          { text: 'GRPC', link: '/grpc/index' },
         ]
       }
     ],
