@@ -80,7 +80,7 @@ In the quick start section, we used a very minimal configuration to get up and r
 
 ## Advanced Configuration
 
-White most configurations that you would ideally need to run a camouflage server can be controlled via the json config, sometimes you'd need a more granular control over the configuration and need access to the underlying middlewares or servers.
+While most configurations that you would ideally need to run a camouflage server can be controlled via the json config, sometimes you'd need a more granular control over the configuration and need access to the underlying middlewares or servers.
 
 Camouflage allows such configuration via several methods on the `CamouflageHttp` class.
 
