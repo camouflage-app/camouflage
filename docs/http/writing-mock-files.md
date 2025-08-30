@@ -78,7 +78,7 @@ The cryptic runes above might look intimidating but they are mostly self explana
 ```
 
 > [!TIP]
-> We will learn more about helpers in the [Helpers section](/helpers/what-are-helpers).
+> We will learn more about helpers in the [Helpers section](/helpers/).
 
 ### Multiple Responses - Randomly Selected
 
@@ -141,7 +141,7 @@ Content-Type: application/json
 In the example above, we have provided two responses that Camouflage can pick from, one with `greeting: "Hello World"`, and another with `greeting: "Hello John"`. In the first line of the mock <span v-pre>`{{#if request.query.name}}`</span>, we are checking for the condition, if there exists a query parameter called `name`. And that's it. If your request is made with the query param `name`, Camouflage will respond with first response, if not then the 2nd second response is what you get. And the value of `name` can be anything. We are using `capture` helper to help us make our response dynamic.
 
 > [!TIP]
-> `if` and `unless` helpers are provided by handlebarjs, which don't have comparison capabilities. These helpers only check if the provided value is truthy or falsy. i.e. you can not do something like this: <span v-pre>`{{#if something = something}}`</span>. For comparisons, you'd need to use `is` helper. See [Helpers page](/helpers/what-are-helpers) for example.
+> `if` and `unless` helpers are provided by handlebarjs, which don't have comparison capabilities. These helpers only check if the provided value is truthy or falsy. i.e. you can not do something like this: <span v-pre>`{{#if something = something}}`</span>. For comparisons, you'd need to use `is` helper. See [Helpers page](/helpers/) for example.
 
 #### Request Matching using headers
 

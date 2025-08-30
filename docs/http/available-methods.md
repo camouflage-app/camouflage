@@ -23,7 +23,7 @@ helpers.addHelper("ping", (context) => {
 camouflageHttp.start();
 ```
 
-You can learn more about helpers in the [Helpers](/helpers/what-are-helpers) section. Take a look at how inbuilt helpers have been created, in case you want to understand how custom helpers can be created. Refer to the [helper source code](https://github.com/camouflage-app/camouflage/tree/main/packages/helpers/src/core).
+You can learn more about helpers in the [Helpers](/helpers/) section. Take a look at how inbuilt helpers have been created, in case you want to understand how custom helpers can be created. Refer to the [helper source code](https://github.com/camouflage-app/camouflage/tree/main/packages/helpers/src/core).
 
 ### _loadConfigFromJson = (configFilePath: string): void_
 

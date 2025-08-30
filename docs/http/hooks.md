@@ -7,7 +7,7 @@ aside: false
 
 While for most use cases, Camouflage by itself is powerful enough to generate dynamic mocked responses, and you often won't need to write more javascript/typescript code other than what we did in the [quick start](/http/quick-start) section. However Camouflage's extensibility allows you to customize your mock server in a way you want. There are two ways to extend and customize Camouflage's capabilities.
 
-1. **Helpers**: Camouflage's templates and inbuilt helpers allow you to make your response dynamic using helpers like `faker`, `random`, `now` and more. You can add delays by adding a `Response-Delay` header in your mock files. You can even write some basic if/else blocks and use loops for request matching and conditional responsesusing the [Handlerbar.js](https://handlebarsjs.com/) templating language. We'll learn more about helpers in the [Helpers](/helpers/what-are-helpers) section.
+1. **Helpers**: Camouflage's templates and inbuilt helpers allow you to make your response dynamic using helpers like `faker`, `random`, `now` and more. You can add delays by adding a `Response-Delay` header in your mock files. You can even write some basic if/else blocks and use loops for request matching and conditional responsesusing the [Handlerbar.js](https://handlebarsjs.com/) templating language. We'll learn more about helpers in the [Helpers](/helpers/) section.
 2. **Hooks**: Hooks allow you to go beyond the handlebar/helpers capabilities and write your own code to extend and customize how Camouflage generates your responses. In this section, we'll learn how to write hooks.
 
 ### `onRequest`
