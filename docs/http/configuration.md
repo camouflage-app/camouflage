@@ -98,7 +98,7 @@ In case you are creating an http2 server, you would need to use `setServerOption
 
 ### _setupCacheWithOptions(options: apicache.Options): void_
 
-Camouflage HTTP uses, `apicache` to configure a cache middleware for your mocks. By default, the cache is saved in memory and you can provide a ttl in seconds via config. However in case you want more control over the options, you can fine tune the settings using `setupCacheWithOptions`.
+Camouflage HTTP uses `apicache` to configure a cache middleware for your mocks. By default, the cache is saved in memory and you can provide a ttl in seconds via config. However in case you want more control over the options, you can fine tune the settings using `setupCacheWithOptions`.
 
 Following example shows how you can cache with redis instead of in memory.
 

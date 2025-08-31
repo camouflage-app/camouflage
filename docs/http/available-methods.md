@@ -5,11 +5,11 @@ aside: false
 
 # HTTP - Available Methods
 
-Other than some configuration methods, Camouflage also allows you to control the server amd customize the server behavior using some additional methods.
+Other than some configuration methods, Camouflage also allows you to control the server and customize the server behavior using some additional methods.
 
 ### _getHelpers = (): Helpers_
 
-When you create a `CamouflageHttp` object, it automatically creates an instance of helpers. You can use `getHelpers()` to get a reference to this helpers object. This is useful when you want add custom helpers that are specific to your requirements.
+When you create a `CamouflageHttp` object, it automatically creates an instance of helpers. You can use `getHelpers()` to get a reference to this helpers object. This is useful when you want to add custom helpers that are specific to your requirements.
 
 ```js
 import Helpers from "@camouflage/helpers";
@@ -36,7 +36,7 @@ You can learn more about helpers in the [Helpers](/helpers/) section. Take a loo
 > - Advanced configuration using `CamouflageHttp` [methods](/http/configuration#advanced-configuration).
 > - And you can also configure your server programmatically by initializing [`CamouflageHttp`](/http/configuration#configuration-via-camouflagehttp-options) with necessary options.
 >
-> Depending on how you prefer to configure your server, you can choose include your config as part of your code and ensure the types yourself, you may at times want to maintain the configuration for your Camouflage server separate from the application code in json files. This is usually a good practice from maintainability point of view, or even practical if you want to maintain multiple config files for different usecases. Or you may want to use a combination of json file and the available methods for more control.
+> Depending on how you prefer to configure your server, you can choose to include your config as part of your code and ensure the types yourself, you may at times want to maintain the configuration for your Camouflage server separate from the application code in json files. This is usually a good practice from the point of view of maintainability, or even practical if you want to maintain multiple config files for different usecases. Or you may want to use a combination of json file and the available methods for more control.
 
 ### _addHook = (route: string, event: "onRequest" | "beforeResponse" | "afterResponse", fn: CamouflageHttpHook): void_
 

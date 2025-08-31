@@ -5,11 +5,11 @@ aside: false
 
 # HTTP - Validation
 
-Camouflage uses `express-openapi-validator` to enable you to validate your requests/responses against a provided OpenAPI 3 schema.
+Camouflage uses `express-openapi-validator` to enable you to validate your requests and responses against a provided OpenAPI 3 schema.
 
-You can configure validation in two ways.
+You can configure validation in two ways:
 
-- **Basic Usage**: You can enable it via config.json. Add following options to you config:
+- **Basic Usage**: You can enable it via `config.json`. Add the following options to your config:
 
 ```json
 {
@@ -25,7 +25,7 @@ You can configure validation in two ways.
 
 Modify the above config as per your requirements, and you are good to go.
 
-- **Advanced Usage**: If you want more control over how to configure validation, you can set the [supported validation options](https://cdimascio.github.io/express-openapi-validator-documentation/usage-options-summary/) via the Camouflage method `setupValidationWithOptions`
+- **Advanced Usage**: If you want more control over how validation is configured, you can set the [supported validation options](https://cdimascio.github.io/express-openapi-validator-documentation/usage-options-summary/) via the Camouflage method `setupValidationWithOptions`.
 
 Enable it via config
 
@@ -38,7 +38,7 @@ Enable it via config
 }
 ```
 
-And then configure rest of the options as you wish
+And then configure the rest of the options as you wish.
 
 ```js
 camouflageHttp.setupValidationWithOptions({

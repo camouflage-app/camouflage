@@ -5,9 +5,9 @@ aside: false
 
 # HTTP - Compression
 
-You can enable the compression options via `config.json`. Once enabled, compression is applied on all the routes, however you can restrict this behaviour using the `setupCompressionWithOptions` method and [available options](https://www.npmjs.com/package/compression#options)
+You can enable the compression options via `config.json`. Once enabled, compression is applied to all routes; however, you can restrict this behavior using the `setupCompressionWithOptions` method and [available options](https://www.npmjs.com/package/compression#options).
 
-Enable compression in `config.json`
+Enable compression in `config.json`:
 
 ```json
 {
