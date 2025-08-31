@@ -5,7 +5,7 @@ aside: false
 
 # HTTP - Quick Start
 
-HTTP module of Camouflage lets you mock your backends based on http, https and http2 protocols. You can create a Camouflage http object from `CamouflageHttp` class and configure it to serve mocks for your incoming requests.
+HTTP module of Camouflage lets you mock your backends based on http and https protocols. You can create a Camouflage http object from `CamouflageHttp` class and configure it to serve mocks for your incoming requests.
 
 Let's setup a basic minimal camouflage http mock server in less than 3 minutes.
 

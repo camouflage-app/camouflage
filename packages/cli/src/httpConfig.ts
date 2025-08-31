@@ -50,18 +50,6 @@ export async function promptHttpConfig(): Promise<CamouflageHttpConfig> {
         },
         {
             type: "confirm",
-            name: "http2.enable",
-            message: "Enable HTTP/2 server?",
-            default: false,
-        },
-        {
-            type: "number",
-            name: "http2.port",
-            message: "HTTP/2 port?",
-            default: 9443,
-        },
-        {
-            type: "confirm",
             name: "monitoring",
             message: "Enable monitoring endpoint (/monitoring)?",
             default: true,
