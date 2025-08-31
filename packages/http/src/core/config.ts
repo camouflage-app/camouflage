@@ -57,7 +57,6 @@ export interface CamouflageHttpConfig {
     log: LogConfig
     http?: HttpConfig
     https?: HttpsConfig
-    http2?: Http2Config
     monitoring?: boolean
     cache?: CacheOptions
     enableCors?: boolean
@@ -88,9 +87,6 @@ interface HttpConfig {
 interface HttpsConfig extends HttpConfig {
 
 }
-interface Http2Config extends HttpConfig {
-
-}
 const cacheSchema: z.ZodSchema = z.object({
     enable: z.boolean(),
     timeInSeconds: z.number().optional()
@@ -100,10 +96,6 @@ const httpSchema: z.ZodSchema = z.object({
     port: z.number()
 });
 const httpsSchema: z.ZodSchema = z.object({
-    enable: z.boolean(),
-    port: z.number()
-});
-const http2Schema: z.ZodSchema = z.object({
     enable: z.boolean(),
     port: z.number()
 });
@@ -122,7 +114,6 @@ const camouflageConfigSchema: z.ZodSchema = z.object({
     log: logSchema,
     http: httpSchema.optional(),
     https: httpsSchema.optional(),
-    http2: http2Schema.optional(),
     monitoring: z.boolean().optional(),
     cache: cacheSchema.optional(),
     enableCors: z.boolean().optional(),
@@ -138,10 +129,10 @@ const camouflageConfigSchema: z.ZodSchema = z.object({
     }
     return true
 }, { message: "log.level is required if log.enabled is true" })
-    .refine(data => data.http || data.https || data.http2, {
-        message: "At least one of, 'http', 'https' or 'http2' must be provided in config.",
-    }).refine(data => data.http?.enable || data.https?.enable || data.http2?.enable, {
-        message: "At least one of, 'http', 'https' or 'http2' must be enabled in config.",
+    .refine(data => data.http || data.https, {
+        message: "At least one of, 'http' or 'https' must be provided in config.",
+    }).refine(data => data.http?.enable || data.https?.enable, {
+        message: "At least one of, 'http' or 'https' must be enabled in config.",
     }).refine(data => {
         if (data.http && data.https) {
             if (data.http.enable && data.https.enable) {
@@ -150,23 +141,9 @@ const camouflageConfigSchema: z.ZodSchema = z.object({
                 }
             }
         }
-        if (data.http && data.http2) {
-            if (data.http.enable && data.http2.enable) {
-                if (data.http.port === data.http2.port) {
-                    return false
-                }
-            }
-        }
-        if (data.https && data.http2) {
-            if (data.https.enable && data.http2.enable) {
-                if (data.https.port === data.http2.port) {
-                    return false
-                }
-            }
-        }
         return true
     }, {
-        message: `Use different ports each protocol http, https and http2`
+        message: `Use different ports each protocol http, https`
     }).refine(data => {
         if (data.cache && data.cache.enable) {
             if (!data.cache.timeInSeconds) return false

@@ -16,13 +16,12 @@ import { registerCustomHelpers } from '../helpers/index.js'
 import { CompressionOptions } from "compression";
 import * as chokidar from "chokidar";
 import { debounce } from "../utils/debouce.js";
-import type { ServerOptions } from "spdy";
 import { pathToRoute } from "../utils/loadRoutes.js";
 /**
  * CamouflageHttp
  *
  * A configurable HTTP mock server for REST APIs.
- * Supports multiple protocols (HTTP, HTTPS, HTTP2),
+ * Supports multiple protocols (HTTP, HTTPS),
  * dynamic templating with Handlebars, middleware,
  * hooks, and request validation.
  */
@@ -34,10 +33,8 @@ export default class CamouflageHttp {
     private app: express.Application | null = null
     private httpServer: Server | null = null
     private httpsServer: Server | null = null
-    private http2Server: Server | null = null
     private httpServerOptions: http.ServerOptions | null = null
     private httpsServerOptions: https.ServerOptions | null = null
-    private http2ServerOptions: ServerOptions | null = null
     private helpers: Helpers;
     private hooks: Hooks = {};
     private validationOpts: any | null = null
@@ -95,9 +92,6 @@ export default class CamouflageHttp {
     public setServerOptionsHttps = (options: https.ServerOptions): void => {
         this.httpsServerOptions = options
     }
-    public setServerOptionsHttp2 = (options: ServerOptions): void => {
-        this.http2ServerOptions = options
-    }
     public setupCacheWithOptions = (options: apicache.Options): void => {
         this.cacheOptions = options
     }
@@ -142,22 +136,8 @@ export default class CamouflageHttp {
                 log.info(`Ask and ye shall recieve a camouflage-https server at [:${this.config?.https?.port}]`)
             })
         }
-        if (this.config.http2 && this.config.http2.enable && this.app && this.http2ServerOptions) {
-            try {
-                const spdy = (await import('spdy')).default
-                this.http2Server = spdy.createServer(this.http2ServerOptions, this.app).listen(this.config.http2?.port, () => {
-                    log.info(`Ask and ye shall recieve a camouflage-http2 server at [:${this.config?.http2?.port}]`)
-                })
-            } catch (error) {
-                console.log(error)
-                log.warn('HTTP/2 server could not be started because "spdy"/"http_parser" is not supported in the your NodeJS version. Try downgrading to a supported NodeJS version. It is recommended to use nvm to maintain multiple node versions.');
-            }
-        }
         if (this.config.https && this.config.https.enable && !this.httpsServerOptions) {
-            log.error(`Oops! https server needs its SSL suit. Hint: camouflage.setServerOptionsHttps()`)
-        }
-        if (this.config.http2 && this.config.http2.enable && !this.http2ServerOptions) {
-            log.error(`Oops! http2 server needs its SSL suit. Hint: camouflage.setServerOptionsHttp2()`)
+            log.error(`https server requires additional options. Set required options using camouflage.setServerOptionsHttps()`)
         }
         if (this.config.mode === "development") {
             this.watchMocksDir();
@@ -166,7 +146,6 @@ export default class CamouflageHttp {
     public async stop(): Promise<void> {
         if (this.httpServer) this.httpServer.close()
         if (this.httpsServer) this.httpsServer.close()
-        if (this.http2Server) this.http2Server.close()
     }
     public async restart(): Promise<void> {
         let runningServers = this.getRunningServers()
@@ -186,17 +165,11 @@ export default class CamouflageHttp {
                 this.start()
             }
         })
-        if (this.http2Server) this.http2Server.close(() => {
-            if (runningServers <= 3) {
-                this.start()
-            }
-        })
     }
     private getRunningServers = (): number => {
         let count = 0;
         if (this.httpServer) count++
         if (this.httpsServer) count++
-        if (this.http2Server) count++
         return count
     }
     private watchMocksDir = () => {

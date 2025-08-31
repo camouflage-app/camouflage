@@ -50,9 +50,6 @@ Before installing and running Camouflage, make sure your environment meets the f
 - **Express 5**
   - Camouflage HTTP server is built on **Express 5**, so ensure you’re not mixing incompatible middleware versions from Express 4.
 
-> [!WARNING]
-> `@camouflage/http` depends on `spdy` to enable http2 protocol. This is known to cause issues with newer versions of Node.js. It's recommended to use nvm to downgrade to a lower version of node. A relevant warning is shown when http2 is enabled.
-
 ### OS Compatibility
 
 - ✅ Linux

@@ -32,10 +32,6 @@ In the quick start section, we used a very minimal configuration to get up and r
     "enable": false,
     "port": 8443
   },
-  "http2": {
-    "enable": false,
-    "port": 9443
-  },
   "monitoring": true,
   "cache": {
     "enable": true,
@@ -65,8 +61,6 @@ In the quick start section, we used a very minimal configuration to get up and r
 | `http.port` | number (eg: 8080) | Port on which http server would be available | No |
 | `https.enable` | `true`, `false` | Enables or disables https server | No |
 | `https.port` | number (eg: 8443) | Port on which https server would be available | No |
-| `http2.enable` | `true`, `false` | Enables or disables http2 server | No |
-| `http2.port` | number (eg: 9443) | Port on which http2 server would be available | No |
 | `monitoring` | `true`, `false` | if enabled, provides a /monitoring endpoint with some dashboards for monitoring | No |
 | `cache.enable` | `true`, `false` | Enables or disables cache | No |
 | `cache.timeInSeconds` | number | If cache is enabled, sets cache ttl to specified seconds | No |
@@ -91,10 +85,6 @@ Depending on your use case, you might want to set additional options. Use `setSe
 ### _setServerOptionsHttps(options: https.ServerOptions): void_
 
 In case you are creating an https server, you would need to use `setServerOptionsHttps` to provide the necessary credentials. You can use it to add other [available options](https://nodejs.org/api/https.html#httpscreateserveroptions-requestlistener) as well to your https servers.
-
-### _setServerOptionsHttp2(options: spdy.server.ServerOptions): void_
-
-In case you are creating an http2 server, you would need to use `setServerOptionsHttp2` to provide the necessary credentials. You can use it to add other [available options](https://www.npmjs.com/package/spdy#options) as well to your http2 servers.
 
 ### _setupCacheWithOptions(options: apicache.Options): void_
 
