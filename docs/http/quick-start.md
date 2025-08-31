@@ -2,6 +2,7 @@
 layout: doc
 aside: false
 ---
+
 # HTTP - Quick Start
 
 HTTP module of Camouflage lets you mock your backends based on http, https and http2 protocols. You can create a Camouflage http object from `CamouflageHttp` class and configure it to serve mocks for your incoming requests.
@@ -30,13 +31,13 @@ npx jsr add @camouflage/http
 
 ## Setting up HTTP mock server:
 
-Once you have your project setup with Camouflage's http module installed. You can begin to setup your camouflage http server. You need three things.
+Once you have your project setup with Camouflage's http module installed, you can begin to setup your camouflage http server. You need three things.
 
 - A `config.json` file to hold the configurations you want your mock server to use.
 - An `index.js` file to write your code in.
 - A `mocks/` folder to hold the definitions of what API endpoints you are mocking and what responses you'd expect.
 
-Let's begin
+Let's begin:
 
 **Create a config.json file at the root of your project**
 
