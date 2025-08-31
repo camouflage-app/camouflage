@@ -1,6 +1,6 @@
 {
   "name": "@camouflage/http",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -9,7 +9,7 @@
     "build": "tsc -p tsconfig.json"
   },
   "dependencies": {
-    "@camouflage/helpers": "*",
+    "jsr:@camouflage/helpers": "^0.1.8",
     "apicache": "^1.6.3",
     "bunyan": "^1.8.15",
     "bunyan-format": "^0.2.1",
@@ -22,7 +22,6 @@
     "express-openapi-validator": "^5.5.7",
     "express-query-parser": "^1.3.3",
     "jsonpath": "^1.1.1",
-    "spdy": "^4.0.2",
     "swagger-stats": "^0.99.7",
     "zod": "^3.25.67"
   },
