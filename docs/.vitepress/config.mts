@@ -32,6 +32,15 @@ export default defineConfig({
           },
           { text: 'Helpers', link: '/helpers/index' },
           { text: 'GRPC', link: '/grpc/index' },
+          {
+            text: 'Integrations',
+            items: [
+              {
+                text: "Vite",
+                link: '/integrations/vite'
+              }
+            ]
+          },
         ]
       }
     ],
